@@ -6,33 +6,35 @@ import java.util.Scanner;
 
 class Main {
     public static void main(String[] args) {
-
-        System.out.println("Введите строку через пробелы ");
-        Scanner console = new Scanner(System.in);
-        String input = console.nextLine();
-        System.out.println("Вы ввели " + input);
-        String[] strings = input.split(" ");
-        int first = RomToNum(strings[0]);
-        String sgn = strings[1];
-        int second = RomToNum(strings[2]);
-        String cl = calc(first, sgn, second);
-        String[] rom = cl.split("");
-        char bool = input.charAt(0);
-        if (Integer.parseInt(cl) != 0) {
-            if (Character.isDigit(bool) == true)
-                System.out.printf("Полученное значение " + cl);
-            else {
-                if (Integer.parseInt(cl) > 10) {
-                    String s1 = NumToRomT(Integer.parseInt(rom[0]));
-                    String s2 = NumToRomU(Integer.parseInt(rom[1]));
-                    System.out.printf("Полученное значение " + s1 + s2);
-                } else {
-                    String s2 = NumToRomU(Integer.parseInt(rom[0]));
-                    System.out.printf("Полученное значение " + s2);
+        try {
+            System.out.println("Введите строку через пробелы ");
+            Scanner console = new Scanner(System.in);
+            String input = console.nextLine();
+            System.out.println("Вы ввели " + input);
+            String[] strings = input.split(" ");
+            int first = RomToNum(strings[0]);
+            String sgn = strings[1];
+            int second = RomToNum(strings[2]);
+            String cl = calc(first, sgn, second);
+            String[] rom = cl.split("");
+            char bool = input.charAt(0);
+            if (Integer.parseInt(cl) != 0) {
+                if (Character.isDigit(bool) == true)
+                    System.out.printf("Полученное значение " + cl);
+                else {
+                    if (Integer.parseInt(cl) > 10) {
+                        String s1 = NumToRomT(Integer.parseInt(rom[0]));
+                        String s2 = NumToRomU(Integer.parseInt(rom[1]));
+                        System.out.printf("Полученное значение " + s1 + s2);
+                    } else {
+                        String s2 = NumToRomU(Integer.parseInt(rom[0]));
+                        System.out.printf("Полученное значение " + s2);
+                    }
                 }
-            }
+            } throw new ArithmeticException("исключение");
+        } catch (ArithmeticException e) {
+            System.out.println("исключение");
         }
-        else System.out.println("исключение");
     }
 
 
