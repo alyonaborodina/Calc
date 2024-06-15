@@ -11,17 +11,17 @@ class Main {
             Scanner console = new Scanner(System.in);
             String input = console.nextLine();
             System.out.println("Вы ввели " + input);
-            String[] strings = input.split(" ");
-            int first = RomToNum(strings[0]);
-            String sgn = strings[1];
-            int second = RomToNum(strings[2]);
-            String cl = calc(first, sgn, second);
-            String[] rom = cl.split("");
-            char bool = input.charAt(0);
             try {
-                if (Character.isDigit(bool) == true)
-                    System.out.printf("Полученное значение " + cl);
-                else {
+                String[] strings = input.split(" ");
+                int first = RomToNum(strings[0]);
+                String sgn = strings[1];
+                int second = RomToNum(strings[2]);
+                String cl = calc(first, sgn, second);
+                String[] rom = cl.split("");
+                char bool = input.charAt(0);
+                    if (Character.isDigit(bool) == true)
+                        System.out.printf("Полученное значение " + cl);
+                    else {
                     if (Integer.parseInt(cl) >= 10) {
                         String s1 = NumToRomT(Integer.parseInt(rom[0]));
                         String s2 = NumToRomU(Integer.parseInt(rom[1]));
@@ -33,10 +33,10 @@ class Main {
                 }
             } catch (ArithmeticException e)
             {
-                System.out.println("исключение 1");
+                System.err.println(e.getMessage());
             }
         } catch (Exception e) {
-            System.out.println("исключение 2");
+            System.err.println(e.getMessage());
         }
     }
 
