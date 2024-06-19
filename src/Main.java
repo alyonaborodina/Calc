@@ -59,7 +59,7 @@ class Main {
 
     }
 
-    private static int RomToNum(String roman) {
+     static int RomToNum(String roman) {
         if (roman.equals("I")) {
             return 1;
         } else if (roman.equals("II")) {
@@ -85,7 +85,7 @@ class Main {
         }
     }
 
-    private static String NumToRomU(int number) {
+     static String NumToRomU(int number) {
         String rtrn = "";
         if (number == 1) {
             rtrn =  "I";
@@ -113,7 +113,7 @@ class Main {
         return rtrn;
     }
 
-    private static String NumToRomT(int number) {
+     static String NumToRomT(int number) {
         String rtrn = "";
         if (number == 1) {
             rtrn =  "Х";
