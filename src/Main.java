@@ -5,44 +5,41 @@ import java.util.Scanner;
 
 
 class Main {
-    public static void main(String[] args) {
-        try {
+    public static void main(String[] args) throws Exception{
             System.out.println("Введите строку через пробелы ");
             Scanner console = new Scanner(System.in);
             String input = console.nextLine();
-            System.out.println("Вы ввели " + input);
-            try {
-                String[] strings = input.split(" ");
-                int first = RomToNum(strings[0]);
-                String sgn = strings[1];
-                int second = RomToNum(strings[2]);
-                String cl = calc(first, sgn, second);
+ //           System.out.println("Вы ввели " + input);
+                String cl = calc(input);
                 String[] rom = cl.split("");
+                if (Integer.parseInt(cl) == 0 || Integer.parseInt(cl) > 18)
+                     throw new Exception("Введены недопустимые цифры или знаки");
                 char bool = input.charAt(0);
-                    if (Character.isDigit(bool) == true)
-                        System.out.printf("Полученное значение " + cl);
-                    else {
+                if (Character.isDigit(bool) == true)
+                    System.out.printf("Полученное значение " + cl);
+                else {
+                    if (Integer.parseInt(cl) < 1 || Integer.parseInt(cl) > 10)
+                        throw new Exception("Введены неверные римские цифры");
+                    else
                     if (Integer.parseInt(cl) >= 10) {
                         String s1 = NumToRomT(Integer.parseInt(rom[0]));
                         String s2 = NumToRomU(Integer.parseInt(rom[1]));
                         System.out.printf("Полученное значение " + s1 + s2);
-                    } else {
+                    } else if (Integer.parseInt(cl) >= 1) {
                         String s2 = NumToRomU(Integer.parseInt(rom[0]));
                         System.out.printf("Полученное значение " + s2);
                     }
                 }
-            } catch (ArithmeticException e)
-            {
-                System.err.println(e.getMessage());
-            }
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
     }
 
 
-    static String calc(int frst, String sg, int scnd) {
 
+    static String calc(String input) {
+
+        String[] strings = input.split(" ");
+        int frst = RomToNum(strings[0]);
+        String sg = strings[1];
+        int scnd = RomToNum(strings[2]);
         int rzlt = 0;
 
         if ((frst > 0) && (frst <= 10) && (scnd > 0) && (scnd <= 10))
