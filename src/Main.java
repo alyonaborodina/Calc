@@ -27,6 +27,7 @@ class Main {
                         String s2 = NumToRomU(Integer.parseInt(rom[0]));
                         System.out.printf("Полученное значение " + s2);
                     }
+                    else throw new Exception("Полученное значение меньше нуля");
                 }
     }
 
