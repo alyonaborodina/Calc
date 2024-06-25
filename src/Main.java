@@ -11,7 +11,7 @@ class Main {
             String input = console.nextLine();
  //           System.out.println("Вы ввели " + input);
             String[] exam = input.split(" ");
-            if (RomToNum(exam[0]) < 0 || RomToNum(exam[0]) > 10 || RomToNum(exam[2]) < 0 || RomToNum(exam[2]) > 10)
+            if (RomToNum(exam[0]) <= 0 || RomToNum(exam[0]) > 10 || RomToNum(exam[2]) <= 0 || RomToNum(exam[2]) > 10)
             throw new Exception("Введены недопустимые цифры");
             String cl = calc(input);
             String[] rom = cl.split("");
