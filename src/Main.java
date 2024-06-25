@@ -10,17 +10,15 @@ class Main {
             Scanner console = new Scanner(System.in);
             String input = console.nextLine();
  //           System.out.println("Вы ввели " + input);
-                String cl = calc(input);
-                String[] rom = cl.split("");
-                if (Integer.parseInt(cl) == 0 || Integer.parseInt(cl) > 18)
-                     throw new Exception("Введены недопустимые цифры или знаки");
+            String[] exam = input.split(" ");
+            if (RomToNum(exam[0]) < 0 || RomToNum(exam[0]) > 10 || RomToNum(exam[2]) < 0 || RomToNum(exam[2]) > 10)
+            throw new Exception("Введены недопустимые цифры");
+            String cl = calc(input);
+            String[] rom = cl.split("");
                 char bool = input.charAt(0);
                 if (Character.isDigit(bool) == true)
                     System.out.printf("Полученное значение " + cl);
                 else {
-                    if (Integer.parseInt(cl) < 1 || Integer.parseInt(cl) > 10)
-                        throw new Exception("Введены неверные римские цифры");
-                    else
                     if (Integer.parseInt(cl) >= 10) {
                         String s1 = NumToRomT(Integer.parseInt(rom[0]));
                         String s2 = NumToRomU(Integer.parseInt(rom[1]));
@@ -41,7 +39,6 @@ class Main {
         String sg = strings[1];
         int scnd = RomToNum(strings[2]);
         int rzlt = 0;
-
         if ((frst > 0) && (frst <= 10) && (scnd > 0) && (scnd <= 10))
             if (sg.equals("+"))
                 rzlt = frst + scnd;
